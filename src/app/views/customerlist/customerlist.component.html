@@ -1,0 +1,77 @@
+<div class="container-fluid">
+  <div class="row mt-3">
+    <div class="col-lg-12 border">
+      <span class="lead border-bottom p-2"> Customer List</span> 
+        <button class="btn btn-sm btn-primary p-2 m-3"(click)="showDialog()">Add New Customer</button>
+      <table class="table table-bordered table-resposive table-striped">
+        <tr>
+          <th>Customer Name</th>
+          <th>Company Name</th>
+          <th>Address</th>
+          <th>Postal Address</th>
+          <th>Telephone</th>
+          <th>Email</th>
+          <!-- <th>Status</th> -->
+          <th>Action</th>
+        </tr>
+        <tr *ngFor="let item of customerList; let i = index">
+          <td *ngIf="!isEdit">{{item.customerName}}</td>
+          <td *ngIf="!isEdit">{{item.companyName}}</td>
+          <td *ngIf="!isEdit">{{item.address}}</td>
+          <td *ngIf="!isEdit">{{item.postalAddress}}</td>
+          <td *ngIf="!isEdit">{{item.telephone}}</td>
+          <td *ngIf="!isEdit">{{item.email}}</td>
+         <!--  <td *ngIf="!isEdit">{{item.status}}</td> -->
+          <td *ngIf="!isEdit">
+            <span class="m-1">
+                <i class="far fa-trash-alt" (click)="deleteItem(i)" data-toggle="tooltip" data-placement="right" title="Delete"></i>
+            </span>
+            <span class="m-1 pointer" (click)="editItem(item)">
+                <i class="fas fa-edit" data-toggle="tooltip" data-placement="right" title="Edit"></i>
+            </span>
+           <!--  <span class="m-1 pointer" (click)="activateDactivate(item)">
+                <i class="fas fa-thumbs-up" *ngIf="item.status != 'active'" data-toggle="tooltip" data-placement="right" title="Activate"></i>
+                <i class="fas fa-thumbs-down" *ngIf="item.status != 'inactive'" data-toggle="tooltip" data-placement="right" title="Deactivate"></i>
+            </span> -->
+          </td>
+
+          <td *ngIf="isEdit && selectedId== item.id"><input type="text" [(ngModel)]="item.customerName"></td>
+          <td *ngIf="isEdit && selectedId== item.id"><input type="text" [(ngModel)]="item.companyName"></td>
+          <td *ngIf="isEdit && selectedId== item.id"><input type="text" [(ngModel)]="item.address"></td>
+          <td *ngIf="isEdit && selectedId== item.id"><input type="text" [(ngModel)]="item.postalAddress"></td>
+          <td *ngIf="isEdit && selectedId== item.id"><input type="text" [(ngModel)]="item.telephone"></td>
+          <td *ngIf="isEdit && selectedId== item.id"><input type="text" [(ngModel)]="item.email"></td>
+          <!-- <td *ngIf="isEdit && selectedId== item.id">{{item.status}}</td> -->
+          <td *ngIf="isEdit && selectedId== item.id">
+            <button class="btn btn-primary" (click)="save()">Save</button>
+            <button class="btn btn-default" (click)="cancel()">Cancel</button>
+          </td>
+
+          <td *ngIf="isEdit && selectedId != item.id">{{item.customerName}}</td>
+          <td *ngIf="isEdit && selectedId != item.id">{{item.companyName}}</td>
+          <td *ngIf="isEdit && selectedId != item.id">{{item.address}}</td>
+          <td *ngIf="isEdit && selectedId != item.id">{{item.postalAddress}}</td>
+          <td *ngIf="isEdit && selectedId != item.id">{{item.course}}</td>
+          <td *ngIf="isEdit && selectedId != item.id">{{item.telephone}}</td>
+          <td *ngIf="isEdit && selectedId != item.id">{{item.email}}</td>
+          <td *ngIf="isEdit && selectedId != item.id">
+            <span class="m-1 pointer" (click)="editItem(item)">
+                <i class="far fa-trash-alt"></i>
+            </span>
+            <span class="m-1">
+                <i class="fas fa-edit"></i>
+            </span>
+          </td>
+        </tr>
+        <tr *ngIf="! (customerList && customerList.length)">
+          <td colspan=6> 
+              <div class="alert alert-secondary text-center"> No customers to display !!!</div></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+
+<app-create-customer [display]="display" (displayChange)="openModalDialog($event)" (addedCustomer)="addCustomer($event)"></app-create-customer>
