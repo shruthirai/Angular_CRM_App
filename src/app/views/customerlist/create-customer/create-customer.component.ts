@@ -22,24 +22,18 @@ export class CreateCustomerComponent implements OnInit {
     this.date = new Date(); // Today date and time
     // Login Validation
     this.customerForm = new FormGroup({
-      customerName: new FormControl('', Validators.required),
-      companyName: new FormControl('', Validators.required),
+      name: new FormControl('', Validators.required),
+      serial_number: new FormControl('', Validators.required),
       address: new FormControl('', Validators.required),
-      postalAddress: new FormControl('', Validators.required),
+      postal_address: new FormControl('', Validators.required),
       telephone: new FormControl('', Validators.required),
       email: new FormControl('', Validators.required)
     });
 
     this.customerTypeList = [
-        { Name: 'Australia', Code: 'AU' },
-            { Name: 'Bermuda', Code: 'BM' },
-            { Name: 'Canada', Code: 'CA' },
-            { Name: 'Cameroon', Code: 'CM' },
-            { Name: 'Denmark', Code: 'DK' },
-            { Name: 'France', Code: 'FR' },
-            { Name: 'Finland', Code: 'FI' },
-            { Name: 'Germany', Code: 'DE' }
-            
+        { Name: 'Agent', Code: 'AG' },
+        { Name: 'Broker', Code: 'BR' },
+        { Name: 'Shipping Company', Code: 'SH' }
         ];
     this._commonSVC.getCustomerTypeList().subscribe((data) => {
       //this.customerList = data.json();
@@ -61,7 +55,6 @@ export class CreateCustomerComponent implements OnInit {
   }
 
   saveCustomer() {
-
     if (this.customerForm.valid) {
       this.addedCustomer.emit(this.customerForm.value);
       this.closeModalDialog();

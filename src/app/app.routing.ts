@@ -1,19 +1,18 @@
 import { RouterModule, Routes, Router } from '@angular/router';
 import { ModuleWithProviders } from '@angular/core';
-import { HomeComponent } from './views/home/home.component';
+import { AppComponent } from './app.component';
 import { CustomerlistComponent } from './views/customerlist/customerlist.component';
-import { PermissionsComponent } from './views/permissions/permissions.component';
+import { HomeComponent } from './views/home/home.component';
 
 const route: Routes = [
     {
-        path: 'aeyone/app', component: HomeComponent,
+        path: 'app', component: HomeComponent,
         children: [
-            {path: 'customerlist', component: CustomerlistComponent},
-            {path: 'permission', component: PermissionsComponent}
+            {path: 'customerlist', component: CustomerlistComponent}
         ]
     },
-    { path: '**', redirectTo: '/aeyone/app/customerlist', pathMatch: 'full' },
-    { path: '', redirectTo: '/aeyone/app/customerlist', pathMatch: 'full' },
+    { path: '**', redirectTo: '/app/customerlist', pathMatch: 'full' },
+    { path: '', redirectTo: '/app/customerlist', pathMatch: 'full' },
 ];
 
 export const routingModule: ModuleWithProviders = RouterModule.forRoot(route);

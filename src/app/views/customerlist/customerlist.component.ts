@@ -49,22 +49,9 @@ selectedId;
  }
 
  addCustomer(event) {
- console.log("EEEEEEEEEEE");
+   console.log("EEEEEEEEEEE");
    event.id = UUID.UUID();
    this.customerList.push(event);
    this._customerSVC.saveCustomer(event);
- }
-
- activateDactivate(item) {
-   this.customerList.filter((data => {
-     if (data.id === item.id) {
-      if (item.status !== 'active' ) {
-        data.status = 'active';
-      } else {
-        data.status =  'inactive';
-      }
-     }
-   }));
-   return item.status !== 'active' ? 'active' : 'inactive';
  }
 }

@@ -20,15 +20,15 @@
           <div class="row form-group">
             <div class="col-lg-12">
               <label for="first Name"> Customer Name</label>
-              <input type="text" class="form-control" formControlName="customerName" required>
-              <span class="text-danger" [hidden]="!(customerForm.controls.customerName['touched'] && !customerForm.controls.customerName.value )" >
+              <input type="text" class="form-control" formControlName="name" required>
+              <span class="text-danger" [hidden]="!(customerForm.controls.name['touched'] && !customerForm.controls.name.value )" >
                 Customer Name is required
               </span>
             </div><br />
             <div class="col-lg-12">
               <label for="first Name"> Serial Number</label>
-              <input type="text" class="form-control" formControlName="companyName" required>
-              <span class="text-danger" [hidden]="!(customerForm.controls.companyName['touched'] && !customerForm.controls.companyName.value )" >
+              <input type="text" class="form-control" formControlName="serial_number" required>
+              <span class="text-danger" [hidden]="!(customerForm.controls.serial_number['touched'] && !customerForm.controls.serial_number.value )" >
                 Serial Number is required
               </span>
             </div><br />
@@ -45,8 +45,8 @@
             </div><br />
             <div class="col-lg-12">
               <label for="first Name"> Postal Address</label>
-              <input type="text" class="form-control" formControlName="postalAddress" required>
-              <span class="text-danger" [hidden]="!(customerForm.controls.postalAddress['touched'] && !customerForm.controls.postalAddress.value )" >
+              <input type="text" class="form-control" formControlName="postal_address" required>
+              <span class="text-danger" [hidden]="!(customerForm.controls.postal_address['touched'] && !customerForm.controls.postal_address.value )" >
                 Postal Address is required
               </span>
             </div><br />
