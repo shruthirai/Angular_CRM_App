@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { Http, Response, Headers } from '@angular/http';  
+import 'rxjs/Rx'; 
 
 @Injectable()
 export class CommonServiceService {
 
-  constructor() { }
+  constructor(private http: Http) { }
 
   validateAllFields(formGroup: FormGroup) {
     Object.keys(formGroup.controls).forEach(field => {  
@@ -15,5 +17,14 @@ export class CommonServiceService {
         this.validateAllFields(control);            
       }
     });
+  }
+
+  getCustomerTypeList() {
+    let self = this;  
+    return this.http.get('http://localhost:8000/customer_type')  
+        .map((res: Response) => {
+            console.log(res.json());
+            return res.json();
+      });
   }
 }

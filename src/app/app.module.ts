@@ -12,6 +12,7 @@ import { CreateCustomerComponent } from './views/customerlist/create-customer/cr
 import { CommonServiceService } from './service/common-service.service';
 import { HttpModule, Http } from '@angular/http';
 import { CustomerService } from './service/customer.service';
+import { MultiSelectAllModule } from '@syncfusion/ej2-angular-dropdowns';
 
 
 @NgModule({
@@ -24,7 +25,7 @@ import { CustomerService } from './service/customer.service';
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule, routingModule, ReactiveFormsModule, FormsModule,
+    BrowserAnimationsModule, routingModule, ReactiveFormsModule, FormsModule,MultiSelectAllModule,
     HttpModule
   ],
   providers: [CommonServiceService, CustomerService],

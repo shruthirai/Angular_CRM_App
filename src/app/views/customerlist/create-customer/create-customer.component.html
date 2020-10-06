@@ -26,11 +26,15 @@
               </span>
             </div><br />
             <div class="col-lg-12">
-              <label for="first Name"> Company Name</label>
+              <label for="first Name"> Serial Number</label>
               <input type="text" class="form-control" formControlName="companyName" required>
               <span class="text-danger" [hidden]="!(customerForm.controls.companyName['touched'] && !customerForm.controls.companyName.value )" >
-                Company Name is required
+                Serial Number is required
               </span>
+            </div><br />
+            <div class="col-lg-12">
+              <label for="first Name"> Customer Type</label><br />
+              <ejs-multiselect id='localData' #local [dataSource]='customerTypeList' [fields]='localFields' [placeholder]='localWaterMark'></ejs-multiselect>   
             </div><br />
             <div class="col-lg-12">
               <label for="first Name"> Address</label>
@@ -60,14 +64,7 @@
                 Email is required
               </span>
             </div><br />
-            <div class="col-lg-12">
-              <label for="first Name"> Customer Type</label><br />
-              <select name="type" multiple>
-                <option>Broker</option>
-                <option>Agent</option>
-                <option>Shipping Company</option>
-              </select>   
-            </div>           
+                     
           </div>
         </form>
       </div>

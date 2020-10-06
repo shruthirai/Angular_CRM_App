@@ -8,6 +8,9 @@ import { CommonServiceService } from '../../../service/common-service.service';
   styleUrls: ['./create-customer.component.css']
 })
 export class CreateCustomerComponent implements OnInit {
+  customerTypeList = [];
+  localFields = {};
+  localWaterMark = 'Select Customer Type';
   customerForm: any;
   @Input() display;
   @Output() displayChange = new EventEmitter();
@@ -26,6 +29,25 @@ export class CreateCustomerComponent implements OnInit {
       telephone: new FormControl('', Validators.required),
       email: new FormControl('', Validators.required)
     });
+
+    this.customerTypeList = [
+        { Name: 'Australia', Code: 'AU' },
+            { Name: 'Bermuda', Code: 'BM' },
+            { Name: 'Canada', Code: 'CA' },
+            { Name: 'Cameroon', Code: 'CM' },
+            { Name: 'Denmark', Code: 'DK' },
+            { Name: 'France', Code: 'FR' },
+            { Name: 'Finland', Code: 'FI' },
+            { Name: 'Germany', Code: 'DE' }
+            
+        ];
+    this._commonSVC.getCustomerTypeList().subscribe((data) => {
+      //this.customerList = data.json();
+      this.customerTypeList = data.customer_type;
+      console.log(this.customerTypeList);
+    });
+
+    this.localFields = { text: 'type', value: 'id' };
   }
 
   closeModalDialog() {
