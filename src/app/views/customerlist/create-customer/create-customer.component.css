@@ -1,0 +1,4 @@
+.modal-content {
+	overflow: auto !important;
+    max-height: 100vh !important;
+}

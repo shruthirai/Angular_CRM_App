@@ -59,7 +59,15 @@
               <span class="text-danger" [hidden]="!(customerForm.controls.email['touched'] && !customerForm.controls.email.value )" >
                 Email is required
               </span>
-            </div>            
+            </div><br />
+            <div class="col-lg-12">
+              <label for="first Name"> Customer Type</label><br />
+              <select name="type" multiple>
+                <option>Broker</option>
+                <option>Agent</option>
+                <option>Shipping Company</option>
+              </select>   
+            </div>           
           </div>
         </form>
       </div>

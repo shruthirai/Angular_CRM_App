@@ -13,6 +13,7 @@
           <th>Email</th>
           <!-- <th>Status</th> -->
           <th>Action</th>
+          <th>Customer Type</th>
         </tr>
         <tr *ngFor="let item of customerList; let i = index">
           <td *ngIf="!isEdit">{{item.name}}</td>
