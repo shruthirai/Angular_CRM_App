@@ -49,8 +49,10 @@ selectedId;
  }
 
  addCustomer(event) {
+ console.log("EEEEEEEEEEE");
    event.id = UUID.UUID();
    this.customerList.push(event);
+   this._customerSVC.saveCustomer(event);
  }
 
  activateDactivate(item) {
