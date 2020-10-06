@@ -6,7 +6,7 @@
       <table class="table table-bordered table-resposive table-striped">
         <tr>
           <th>Customer Name</th>
-          <th>Company Name</th>
+          <th>Serial Number</th>
           <th>Address</th>
           <th>Postal Address</th>
           <th>Telephone</th>
@@ -15,10 +15,10 @@
           <th>Action</th>
         </tr>
         <tr *ngFor="let item of customerList; let i = index">
-          <td *ngIf="!isEdit">{{item.customerName}}</td>
-          <td *ngIf="!isEdit">{{item.companyName}}</td>
+          <td *ngIf="!isEdit">{{item.name}}</td>
+          <td *ngIf="!isEdit">{{item.serial_number}}</td>
           <td *ngIf="!isEdit">{{item.address}}</td>
-          <td *ngIf="!isEdit">{{item.postalAddress}}</td>
+          <td *ngIf="!isEdit">{{item.postal_address}}</td>
           <td *ngIf="!isEdit">{{item.telephone}}</td>
           <td *ngIf="!isEdit">{{item.email}}</td>
          <!--  <td *ngIf="!isEdit">{{item.status}}</td> -->

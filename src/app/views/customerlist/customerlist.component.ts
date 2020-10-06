@@ -35,8 +35,9 @@ selectedId;
 
   ngOnInit() {
     this._customerSVC.getCustomerList().subscribe((data) => {
-      this.customerList = data.json();
-
+      //this.customerList = data.json();
+      this.customerList = data.customer;
+      console.log(this.customerList);
     });
   }
 
