@@ -7,12 +7,12 @@ import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { CustomerlistComponent } from './views/customerlist/customerlist.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CreateCustomerComponent } from './views/customerlist/create-customer/create-customer.component';
+import { CreateContactComponent } from './views/customerlist/create-contact/create-contact.component';
 import { CommonServiceService } from './service/common-service.service';
 import { HttpModule, Http } from '@angular/http';
 import { CustomerService } from './service/customer.service';
 import { MultiSelectAllModule } from '@syncfusion/ej2-angular-dropdowns';
 import { HomeComponent } from './views/home/home.component';
-
 
 @NgModule({
   declarations: [
@@ -20,6 +20,7 @@ import { HomeComponent } from './views/home/home.component';
     CustomerlistComponent,
     HomeComponent,
     CreateCustomerComponent,
+    CreateContactComponent
   ],
   imports: [
     BrowserModule,

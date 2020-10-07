@@ -3,6 +3,7 @@
     <div class="col-lg-12 border">
       <span class="lead border-bottom p-2"> Customer List</span> 
         <button class="btn btn-sm btn-primary p-2 m-3"(click)="showDialog()">Add New Customer</button>
+        <button class="btn btn-sm btn-primary p-2 m-3"(click)="showContactDialog()">Add New Contact</button>
       <table class="table table-bordered table-resposive table-striped">
         <tr>
           <th>Customer Name</th>
@@ -75,3 +76,4 @@
 
 
 <app-create-customer [display]="display" (displayChange)="openModalDialog($event)" (addedCustomer)="addCustomer($event)"></app-create-customer>
+<app-create-contact [display]="display1" (displayChange)="openContactModalDialog($event)" (addedContact)="addContact($event)"></app-create-contact>

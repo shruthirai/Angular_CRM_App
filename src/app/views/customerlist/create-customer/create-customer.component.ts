@@ -15,11 +15,9 @@ export class CreateCustomerComponent implements OnInit {
   @Input() display;
   @Output() displayChange = new EventEmitter();
   @Output() addedCustomer= new EventEmitter();
-  date;
   constructor(private _commonSVC: CommonServiceService) { }
 
   ngOnInit() {
-    this.date = new Date(); // Today date and time
     // Login Validation
     this.customerForm = new FormGroup({
       name: new FormControl('', Validators.required),

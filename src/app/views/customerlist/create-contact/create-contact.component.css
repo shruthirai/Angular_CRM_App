@@ -1,11 +1,11 @@
 .modal-content {
-	overflow: auto !important;
-    max-height: 100vh !important;
+  overflow: auto !important;
+  max-height: 100vh !important;
 }
 
 .modal-header-label {
-	margin-left: 156px;
-	font-weight: 700;
+  margin-left: 156px;
+  font-weight: 700;
 }
 
 .modal-body label {
