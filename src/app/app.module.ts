@@ -8,6 +8,7 @@ import { CustomerlistComponent } from './views/customerlist/customerlist.compone
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CreateCustomerComponent } from './views/customerlist/create-customer/create-customer.component';
 import { CreateContactComponent } from './views/customerlist/create-contact/create-contact.component';
+import { CreateCustomerTypeComponent } from './views/customerlist/create-customer-type/create-customer-type.component';
 import { CommonServiceService } from './service/common-service.service';
 import { HttpModule, Http } from '@angular/http';
 import { CustomerService } from './service/customer.service';
@@ -20,7 +21,8 @@ import { HomeComponent } from './views/home/home.component';
     CustomerlistComponent,
     HomeComponent,
     CreateCustomerComponent,
-    CreateContactComponent
+    CreateContactComponent,
+    CreateCustomerTypeComponent
   ],
   imports: [
     BrowserModule,

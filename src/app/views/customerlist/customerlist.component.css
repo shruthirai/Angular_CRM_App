@@ -24,3 +24,7 @@
 .lead {
     font-weight: 500;
 }
+
+.table-bordered td, .table-bordered th {
+  border: 1px solid black;
+}

@@ -1,0 +1,45 @@
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { CommonServiceService } from '../../../service/common-service.service';
+
+@Component({
+  selector: 'app-create-customer-type',
+  templateUrl: './create-customer-type.component.html',
+  styleUrls: ['./create-customer-type.component.css']
+})
+export class CreateCustomerTypeComponent implements OnInit {
+  customerTypeForm: any;
+  @Input() display;
+  @Output() displayChange = new EventEmitter();
+  @Output() addedCustomerType= new EventEmitter();
+  constructor(private _commonSVC: CommonServiceService) { }
+
+  ngOnInit() {
+    // Login Validation
+    this.customerTypeForm = new FormGroup({
+      customer_name: new FormControl('', Validators.required)
+    });
+  }
+
+  closeCustomerTypeModalDialog() {
+    this.display = 'none'; // set none css after close dialog
+    this.displayChange.emit(this.display);
+  }
+
+  // Work against memory leak if component is destroyed
+  ngOnDestroy() {
+    this.displayChange.unsubscribe();
+  }
+
+  saveCustomerType() {
+    console.log('***Save customer type****')
+    /*
+    if (this.customerTypeForm.valid) {
+      this.addedContact.emit(this.customerTypeForm.value);
+      this.closeCustomerTypeModalDialog();
+    } else {
+      this._commonSVC.validateAllFields(this.customerTypeForm);
+    }
+    */
+  }
+}
