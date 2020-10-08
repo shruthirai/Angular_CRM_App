@@ -1,20 +1,20 @@
+<!-- modal 
+
+
 <div class="backdrop" [ngStyle]="{'display':display}"></div>
 
-<!-- modal -->
 <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':display}">
-  <!-- modal-dialog -->
+ 
   <div class="modal-dialog" role="document">
-    <!-- modal-content -->
+   
     <div class="modal-content">
-      <!-- modal-header -->
+     
       <div class="modal-header">
         <label class="modal-header-label">New Customer</label>
-        <!-- <button type="button" class="close" aria-label="Close" (click)="closeModalDialog()">
-          <span aria-hidden="true">&times;</span>
-        </button> -->
+        
       </div>  
 
-      <!-- modal-body -->
+     
       <div class="modal-body">
         <form [formGroup]="customerForm">
           <div class="row form-group">
@@ -68,10 +68,80 @@
         </form>
       </div>
 
-      <!-- modal-footer -->
+     
       <div class="modal-footer">
         <button class="btn btn-primary" (click)="saveCustomer(customerForm.value)">Save</button>
         <button type="button" class="btn btn-default" (click)="closeModalDialog()">Close</button>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<div class="modal fade" id="basicExampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true" [ngStyle]="{'display':display}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">New Customer</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="customerForm">
+          <div class="row form-group">
+            <div class="col-lg-12">
+              <label for="first Name"> Customer Name</label>
+              <input type="text" class="form-control" formControlName="name" required>
+              <span class="text-danger" [hidden]="!(customerForm.controls.name['touched'] && !customerForm.controls.name.value )" >
+                Customer Name is required
+              </span>
+            </div><br />
+            <div class="col-lg-12">
+              <label for="first Name"> Serial Number</label>
+              <input type="text" class="form-control" formControlName="serial_number" required>
+              <span class="text-danger" [hidden]="!(customerForm.controls.serial_number['touched'] && !customerForm.controls.serial_number.value )" >
+                Serial Number is required
+              </span>
+            </div><br />
+            <div class="col-lg-12">
+              <label for="first Name"> Customer Type</label><br />
+              <ejs-multiselect id='localData' #local [dataSource]='customerTypeList' [fields]='localFields' [placeholder]='localWaterMark'></ejs-multiselect>   
+            </div><br />
+            <div class="col-lg-12">
+              <label for="first Name"> Address</label>
+              <input type="text" class="form-control" formControlName="address" required>
+              <span class="text-danger" [hidden]="!(customerForm.controls.address['touched'] && !customerForm.controls.address.value )" >
+                Address is required
+              </span>
+            </div><br />
+            <div class="col-lg-12">
+              <label for="first Name"> Postal Address</label>
+              <input type="text" class="form-control" formControlName="postal_address" required>
+              <span class="text-danger" [hidden]="!(customerForm.controls.postal_address['touched'] && !customerForm.controls.postal_address.value )" >
+                Postal Address is required
+              </span>
+            </div><br />
+            <div class="col-lg-12">
+              <label for="first Name"> Telephone</label>
+              <input type="text" class="form-control" formControlName="telephone" required>
+              <span class="text-danger" [hidden]="!(customerForm.controls.telephone['touched'] && !customerForm.controls.telephone.value )" >
+                Telephone is required
+              </span>
+            </div><br />
+            <div class="col-lg-12">
+              <label for="first Name"> Email</label>
+              <input type="text" class="form-control" formControlName="email" required>
+              <span class="text-danger" [hidden]="!(customerForm.controls.email['touched'] && !customerForm.controls.email.value )" >
+                Email is required
+              </span>
+            </div><br />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="closeModalDialog()">Close</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="saveCustomer(customerForm.value)">Save</button>
       </div>
     </div>
   </div>

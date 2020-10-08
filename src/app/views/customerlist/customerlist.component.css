@@ -25,6 +25,15 @@
     font-weight: 500;
 }
 
+table tr th {
+    font-weight: 700;
+    font-size: large;
+}
+
+table tr td {
+    font-weight: 400;
+    font-size: large;
+}
 .table-bordered td, .table-bordered th {
   border: 1px solid black;
 }
@@ -32,4 +41,8 @@
 .search {
   float: right;
   margin-top: 15px;
+}
+
+.app-buttons {
+    margin-bottom: 15px;
 }

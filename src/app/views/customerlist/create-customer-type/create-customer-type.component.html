@@ -1,20 +1,21 @@
+<!-- modal 
 <div class="backdrop" [ngStyle]="{'display':display}"></div>
 
-<!-- modal -->
+
 <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':display}">
-  <!-- modal-dialog -->
+  
   <div class="modal-dialog" role="document">
-    <!-- modal-content -->
+    
     <div class="modal-content">
-      <!-- modal-header -->
+     
       <div class="modal-header">
         <label class="modal-header-label">New Customer Type</label>
         <!-- <button type="button" class="close" aria-label="Close" (click)="closeContactModalDialog()">
           <span aria-hidden="true">&times;</span>
-        </button> -->
+        </button> 
       </div>
 
-      <!-- modal-body -->
+     
       <div class="modal-body">
         <form [formGroup]="customerTypeForm">
           <div class="row form-group">
@@ -29,12 +30,44 @@
         </form>
       </div>
 
-      <!-- modal-footer -->
+      
       <div class="modal-footer">
         <button class="btn btn-primary" (click)="saveCustomerType(customerTypeForm.value)">Save</button>
         <button type="button" class="btn btn-default" (click)="closeCustomerTypeModalDialog()">Close</button>
       </div>
 
+    </div>
+  </div>
+</div> -->
+
+<!-- Modal -->
+<div class="modal fade" id="basicExampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true" [ngStyle]="{'display':display}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">New Customer Type</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="customerTypeForm">
+          <div class="row form-group">
+            <div class="col-lg-12">
+              <label for="last Name"> Customer Type Name</label>
+              <input type="text" class="form-control" formControlName="customer_type" required>
+              <span class="text-danger" [hidden]="!(customerTypeForm.controls.customer_type['touched'] && !customerTypeForm.controls.customer_type.value )" >
+                Customer Type Name is required
+              </span>
+            </div><br />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="closeCustomerTypeModalDialog()">Close</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="saveCustomerType(customerTypeForm.value)">Save</button>
+      </div>
     </div>
   </div>
 </div>
