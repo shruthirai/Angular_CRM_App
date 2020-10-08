@@ -82,15 +82,16 @@ export class CustomerlistComponent implements OnInit {
 
   /*  Contact Form */
   addContact(event) {
+  console.log(event);
    event.id = UUID.UUID();
-   this.customerList.push(event);
-   //this._customerSVC.saveContact(event);
+   //this.customerList.push(event);
+   this._customerSVC.saveContact(event);
   }
 
   /*  Customer Type Form */
   addCustomerType(event) {
    event.id = UUID.UUID();
-   this.customerList.push(event);
-   //this._customerSVC.saveContact(event);
+   //this.customerList.push(event);
+   this._customerSVC.saveCustomerType(event);
   }
 }

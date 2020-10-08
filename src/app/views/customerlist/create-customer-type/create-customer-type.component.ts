@@ -17,7 +17,7 @@ export class CreateCustomerTypeComponent implements OnInit {
   ngOnInit() {
     // Login Validation
     this.customerTypeForm = new FormGroup({
-      customer_name: new FormControl('', Validators.required)
+      customer_type: new FormControl('', Validators.required)
     });
   }
 
@@ -32,14 +32,12 @@ export class CreateCustomerTypeComponent implements OnInit {
   }
 
   saveCustomerType() {
-    console.log('***Save customer type****')
-    /*
     if (this.customerTypeForm.valid) {
-      this.addedContact.emit(this.customerTypeForm.value);
+      this.addedCustomerType.emit(this.customerTypeForm.value);
       this.closeCustomerTypeModalDialog();
     } else {
       this._commonSVC.validateAllFields(this.customerTypeForm);
     }
-    */
+    
   }
 }

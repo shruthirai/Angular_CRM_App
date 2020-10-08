@@ -36,13 +36,12 @@ export class CreateContactComponent implements OnInit {
   }
 
   saveContact() {
-    console.log('***Save contact ****')
-    /*
+  console.log("ehehheheh")
     if (this.contactForm.valid) {
       this.addedContact.emit(this.contactForm.value);
       this.closeContactModalDialog();
     } else {
       this._commonSVC.validateAllFields(this.contactForm);
-    } */
+    }
   }
 }
