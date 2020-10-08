@@ -14,6 +14,7 @@ import { HttpModule, Http } from '@angular/http';
 import { CustomerService } from './service/customer.service';
 import { MultiSelectAllModule } from '@syncfusion/ej2-angular-dropdowns';
 import { HomeComponent } from './views/home/home.component';
+import { SearchPipe } from './search.pipe';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { HomeComponent } from './views/home/home.component';
     HomeComponent,
     CreateCustomerComponent,
     CreateContactComponent,
-    CreateCustomerTypeComponent
+    CreateCustomerTypeComponent,
+    SearchPipe
   ],
   imports: [
     BrowserModule,

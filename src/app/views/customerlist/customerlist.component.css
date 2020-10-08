@@ -28,3 +28,8 @@
 .table-bordered td, .table-bordered th {
   border: 1px solid black;
 }
+
+.search {
+  float: right;
+  margin-top: 15px;
+}
