@@ -30,7 +30,7 @@ export class CreateContactComponent implements OnInit {
 
     this._customerSVC.getCustomerList().subscribe((data) => {
       //this.customerList = data.json();
-      this.customerList = data.customer;
+      this.customerList = data;
       console.log(this.customerList);
     });
   }
