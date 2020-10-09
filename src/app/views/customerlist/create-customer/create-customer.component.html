@@ -106,7 +106,8 @@
             </div><br />
             <div class="col-lg-12">
               <label for="first Name"> Customer Type</label><br />
-              <ejs-multiselect id='localData' #local [dataSource]='customerTypeList' [fields]='localFields' [placeholder]='localWaterMark'></ejs-multiselect>   
+              <!-- <ejs-multiselect id='localData' name='cutomerType' #local [dataSource]='customerTypeList' [fields]='localFields' [placeholder]='localWaterMark'></ejs-multiselect>  -->
+              <ejs-multiselect id='localData' class="form-control" formControlName='cutomerType' #local [dataSource]='customerTypeList' [fields]='localFields' [placeholder]='localWaterMark'></ejs-multiselect> 
             </div><br />
             <div class="col-lg-12">
               <label for="first Name"> Address</label>

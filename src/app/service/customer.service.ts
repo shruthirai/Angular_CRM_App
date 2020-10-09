@@ -14,8 +14,23 @@ export class CustomerService {
   	let self = this;  
     return this.http.get('http://localhost:8000/customers')  
         .map((res: Response) => {
-            console.log(res.json());
-            return res.json();
+            //console.log(res.json());
+            let data = res.json();
+            let customerList = [];
+            data.customer.forEach(function(d) {
+              let item = {
+                "address": d.address,
+                "email": d.email,
+                "id": d.id,
+                "name": d.name,
+                "postal_address": d.postal_address,
+                "serial_number": d.serial_number,
+                "telephone": d.telephone,
+                "customer_type": d.customer_type.split()
+              };
+              customerList.push(item);
+            });
+            return customerList;
     	});
   }
 
@@ -24,8 +39,7 @@ export class CustomerService {
   saveCustomer(data) {
     let formData = {
       "name": data.name,
-      "serial_number": data.serial_number,
-      "customer_type": [1,2],
+      "customer_type": data.cutomerType,
       "address":  data.address,
       "postal_address": data.postal_address,
       "telephone": data.telephone,
