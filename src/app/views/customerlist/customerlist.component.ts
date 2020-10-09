@@ -1,4 +1,5 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { RouterModule, Routes, Router } from '@angular/router';
 import { CustomerService } from '../../service/customer.service';
 import { UUID } from 'angular2-uuid';
 
@@ -11,7 +12,7 @@ export class CustomerlistComponent implements OnInit {
   customerList = [];
   isEdit = false;
   selectedId;
-    constructor(private _customerSVC: CustomerService) { }
+    constructor(private _customerSVC: CustomerService, private router: Router ) { }
     editItem(item) {
       this.selectedId = item.id;
       this.isEdit = true;
@@ -94,4 +95,12 @@ export class CustomerlistComponent implements OnInit {
    //this.customerList.push(event);
    this._customerSVC.saveCustomerType(event);
   }
+
+  
+  goHome () {
+   console.log('goHome');
+   /*this._router.navigate(['../customer']);*/
+    this.router.navigate(['customer']);
+  }
+  
 }

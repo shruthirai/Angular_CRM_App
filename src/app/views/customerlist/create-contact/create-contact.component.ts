@@ -1,6 +1,9 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CommonServiceService } from '../../../service/common-service.service';
+import { CustomerService } from '../../../service/customer.service';
+import { CustomerlistComponent } from '../customerlist.component';
+import { UUID } from 'angular2-uuid';
 
 @Component({
   selector: 'app-create-contact',
@@ -9,10 +12,11 @@ import { CommonServiceService } from '../../../service/common-service.service';
 })
 export class CreateContactComponent implements OnInit {
   contactForm: any;
+  customerList = [];
   @Input() display;
   @Output() displayChange = new EventEmitter();
   @Output() addedContact= new EventEmitter();
-  constructor(private _commonSVC: CommonServiceService) { }
+  constructor(private _commonSVC: CommonServiceService, private _customerSVC: CustomerService) { }
 
   ngOnInit() {
     // Login Validation
@@ -22,6 +26,12 @@ export class CreateContactComponent implements OnInit {
       title: new FormControl('', Validators.required),
       mobile_phone: new FormControl('', Validators.required),
       personal_email: new FormControl('', Validators.required),
+    });
+
+    this._customerSVC.getCustomerList().subscribe((data) => {
+      //this.customerList = data.json();
+      this.customerList = data.customer;
+      console.log(this.customerList);
     });
   }
 
@@ -43,5 +53,16 @@ export class CreateContactComponent implements OnInit {
     } else {
       this._commonSVC.validateAllFields(this.contactForm);
     }
+  }
+
+  customerChange(e){
+    console.log(e.target.value)
+    /*this.customerList.filter(element => {
+        if(element.name == e.target.value){
+          console.log(element.states[0],"first state")
+          this.states = element.states;
+        }
+      });
+    }*/
   }
 }

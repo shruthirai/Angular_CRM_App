@@ -97,11 +97,18 @@
                 Customer Name is required
               </span>
             </div><br />
-            <div class="col-lg-12">
+            <!-- <div class="col-lg-12">
               <label for="first Name"> Serial Number</label>
               <input type="text" class="form-control" formControlName="serial_number" required>
               <span class="text-danger" [hidden]="!(customerForm.controls.serial_number['touched'] && !customerForm.controls.serial_number.value )" >
                 Serial Number is required
+              </span>
+            </div><br /> -->
+            <div class="col-lg-12">
+              <label for="first Name"> Company Name</label>
+              <input type="text" class="form-control" formControlName="company_name" required>
+              <span class="text-danger" [hidden]="!(customerForm.controls.company_name['touched'] && !customerForm.controls.company_name.value )" >
+                Company Name is required
               </span>
             </div><br />
             <div class="col-lg-12">
@@ -140,8 +147,8 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="closeModalDialog()">Close</button>
         <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="saveCustomer(customerForm.value)">Save</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="closeModalDialog()">Close</button>
       </div>
     </div>
   </div>

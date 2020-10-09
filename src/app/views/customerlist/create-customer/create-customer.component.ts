@@ -21,7 +21,8 @@ export class CreateCustomerComponent implements OnInit {
     // Login Validation
     this.customerForm = new FormGroup({
       name: new FormControl('', Validators.required),
-      serial_number: new FormControl('', Validators.required),
+      //serial_number: new FormControl('', Validators.required),
+      company_name: new FormControl('', Validators.required),
       address: new FormControl('', Validators.required),
       postal_address: new FormControl('', Validators.required),
       telephone: new FormControl('', Validators.required),
@@ -45,6 +46,7 @@ export class CreateCustomerComponent implements OnInit {
   closeModalDialog() {
     this.display = 'none'; // set none css after close dialog
     this.displayChange.emit(this.display);
+    //this.customerForm.value = ''
   }
 
   // Work against memory leak if component is destroyed
