@@ -71,9 +71,10 @@ export class CustomerService {
       last_name: data.last_name,
       title: data.title,
       phone: data.mobile_phone,
-      email: data.email
+      email: data.email,
+      customer_id: data.customer_id === 'Select' ? null : parseInt(data.customer_id)
     };
-
+console.log(formData)
     let headers = new Headers();  
     headers.append('Content-Type', 'application/json; charset=utf-8');  
     return this.http.post("http://localhost:8000/create/contact", formData, { headers: headers })  

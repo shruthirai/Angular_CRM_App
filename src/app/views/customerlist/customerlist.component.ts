@@ -60,6 +60,7 @@ export class CustomerlistComponent implements OnInit {
 
   /*  Contact Form */
   addContact(event) {
+  console.log(event)
     event.id = UUID.UUID();
     this._customerSVC.saveContact(event);
   }

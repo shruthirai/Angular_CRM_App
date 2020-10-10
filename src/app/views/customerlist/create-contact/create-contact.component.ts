@@ -13,6 +13,7 @@ import { UUID } from 'angular2-uuid';
 export class CreateContactComponent implements OnInit {
   contactForm: any;
   customerList = [];
+  customer_id = null;
   @Input() display;
   @Output() displayChange = new EventEmitter();
   @Output() addedContact= new EventEmitter();
@@ -25,7 +26,7 @@ export class CreateContactComponent implements OnInit {
       first_name: new FormControl('', Validators.required),
       title: new FormControl('', Validators.required),
       mobile_phone: new FormControl('', Validators.required),
-      personal_email: new FormControl('', Validators.required),
+      personal_email: new FormControl('', Validators.required)
     });
 
     this._customerSVC.getCustomerList().subscribe((data) => {
@@ -47,7 +48,9 @@ export class CreateContactComponent implements OnInit {
 
   saveContact() {
     if (this.contactForm.valid) {
-      this.addedContact.emit(this.contactForm.value);
+      let data = this.contactForm.value;
+      data.customer_id = this.customer_id;
+      this.addedContact.emit(data);
       this.closeContactModalDialog();
     } else {
       this._commonSVC.validateAllFields(this.contactForm);
@@ -55,6 +58,7 @@ export class CreateContactComponent implements OnInit {
   }
 
   customerChange(e){
-    console.log(e.target.value)
+    console.log(e.target.value);
+    this.customer_id = e.target.value;
   }
 }
