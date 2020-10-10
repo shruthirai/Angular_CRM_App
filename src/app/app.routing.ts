@@ -8,14 +8,12 @@ import { HomeComponent } from './views/home/home.component';
 
 const route: Routes = [
     {
-        path: 'app', component: HomeComponent,
+      path: 'app', component: HomeComponent,
         children: [
-            { path: 'customerlist', component: CustomerlistComponent
-            }
+          { path: 'customerlist', component: CustomerlistComponent }
         ],
     },
-    {path: 'customer/:id', component: CreateSearchComponent},
-    /* { path: '**', redirectTo: '/app/customerlist', pathMatch: 'full' }, */
+    { path: 'customer/:id', component: CreateSearchComponent },
     { path: '', redirectTo: '/app/customerlist', pathMatch: 'full' }
 ];
 

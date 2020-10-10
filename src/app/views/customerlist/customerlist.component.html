@@ -26,61 +26,18 @@
           <th>Postal Address</th>
           <th>Telephone</th>
           <th>Email</th>
-          <th>Customer Type</th>
-          <th>Action</th>
         </tr>
           
         <tr *ngFor="let item of customerList | customerFilter:name; let i = index" [routerLink]="['/customer', item.id]"  style="cursor:pointer;">
-          <td *ngIf="!isEdit">{{item.name}}</td>
-          <td *ngIf="!isEdit">{{item.serial_number}}</td>
-          <td *ngIf="!isEdit">{{item.company_name}}</td>
-          <td *ngIf="!isEdit">{{item.address}}</td>
-          <td *ngIf="!isEdit">{{item.postal_address}}</td>
-          <td *ngIf="!isEdit">{{item.telephone}}</td>
-          <td *ngIf="!isEdit">{{item.email}}</td>
-          <td *ngIf="!isEdit">{{item.serial_number}}</td>
-          <td *ngIf="!isEdit">
-            <!-- Delete function-->
-            <span class="m-1">
-                <i class="far fa-trash-alt" (click)="deleteItem(i)" data-toggle="tooltip" data-placement="right" title="Delete"></i>
-            </span>
-            <!-- Edit -->
-            <span class="m-1 pointer" (click)="editItem(item)">
-                <i class="fas fa-edit" data-toggle="tooltip" data-placement="right" title="Edit"></i>
-            </span>
-          </td>
-          <td *ngIf="isEdit && selectedId== item.id"><input type="text" [(ngModel)]="item.name"></td>
-          <td *ngIf="isEdit && selectedId== item.id"><input type="text" [(ngModel)]="item.serial_number"></td>
-          <td *ngIf="isEdit && selectedId== item.id"><input type="text" [(ngModel)]="item.company_name"></td>
-          <td *ngIf="isEdit && selectedId== item.id"><input type="text" [(ngModel)]="item.address"></td>
-          <td *ngIf="isEdit && selectedId== item.id"><input type="text" [(ngModel)]="item.postal_address"></td>
-          <td *ngIf="isEdit && selectedId== item.id"><input type="text" [(ngModel)]="item.telephone"></td>
-          <td *ngIf="isEdit && selectedId== item.id"><input type="text" [(ngModel)]="item.email"></td>
-          <td *ngIf="isEdit && selectedId== item.id">
-            <button class="btn btn-primary" (click)="save()">Save</button>
-            <button class="btn btn-default" (click)="cancel()">Cancel</button>
-          </td>
-          <td *ngIf="isEdit && selectedId != item.id">{{item.name}}</td>
-          <td *ngIf="isEdit && selectedId != item.id">{{item.serial_number}}</td>
-          <td *ngIf="isEdit && selectedId != item.id">{{item.company_name}}</td>
-          <td *ngIf="isEdit && selectedId != item.id">{{item.address}}</td>
-          <td *ngIf="isEdit && selectedId != item.id">{{item.postal_address}}</td>
-          <td *ngIf="isEdit && selectedId != item.id">{{item.telephone}}</td>
-          <td *ngIf="isEdit && selectedId != item.id">{{item.email}}</td>
-          <td *ngIf="isEdit && selectedId != item.id">
-
-            <!-- Delete Icon to show in other field (other than selected item)-->
-            <span class="m-1 pointer" (click)="editItem(item)">
-                <i class="far fa-trash-alt"></i>
-            </span>
-
-            <!-- Edit Icon to show in other field (other than selected item)-->
-            <span class="m-1">
-                <i class="fas fa-edit"></i>
-            </span>
-          </td>
+          <td>{{item.name}}</td>
+          <td>{{item.serial_number}}</td>
+          <td>{{item.company_name}}</td>
+          <td>{{item.address}}</td>
+          <td>{{item.postal_address}}</td>
+          <td>{{item.telephone}}</td>
+          <td>{{item.email}}</td>
         </tr>
-        <tr *ngIf="! (customerList && customerList.length)">
+        <tr *ngIf="! ((customerList && customerList.length))">
           <td colspan=6>
               <div class="alert alert-secondary text-center"> No customers to display !!!</div></td>
         </tr>

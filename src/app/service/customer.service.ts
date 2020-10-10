@@ -13,27 +13,25 @@ export class CustomerService {
   getCustomerList() {
   	let self = this;  
     return this.http.get('http://localhost:8000/customers')  
-        .map((res: Response) => {
-            //console.log(res.json());
-            let data = res.json();
-            let customerList = [];
-            data.customer.forEach(function(d) {
-              let item = {
-                "address": d.address,
-                "email": d.email,
-                "id": d.id,
-                "name": d.name,
-                "postal_address": d.postal_address,
-                "serial_number": d.serial_number,
-                "telephone": d.telephone,
-                "customer_type": d.customer_type.split()
-              };
-              customerList.push(item);
-            });
-            return customerList;
-    	});
+      .map((res: Response) => {
+        let data = res.json();
+        let customerList = [];
+        data.customer.forEach(function(d) {
+          let item = {
+            "address": d.address,
+            "email": d.email,
+            "id": d.id,
+            "name": d.name,
+            "postal_address": d.postal_address,
+            "serial_number": d.serial_number,
+            "telephone": d.telephone,
+            "customer_type": d.customer_type.split()
+          };
+          customerList.push(item);
+        });
+        return customerList;
+    });
   }
-
 
   /* Post from UI create form to database - Customer */
   saveCustomer(data) {
@@ -50,7 +48,6 @@ export class CustomerService {
     headers.append('Content-Type', 'application/json; charset=utf-8');  
     return this.http.post("http://localhost:8000/create/customer", formData, { headers: headers })  
       .subscribe((res: Response) => {  
-        console.log("############",res);
       }); 
   }
 
@@ -64,7 +61,6 @@ export class CustomerService {
     headers.append('Content-Type', 'application/json; charset=utf-8');  
     return this.http.post("http://localhost:8000/create/customer_type", formData, { headers: headers })  
       .subscribe((res: Response) => {  
-        console.log("############",res);
       }); 
   }
 
@@ -82,7 +78,6 @@ export class CustomerService {
     headers.append('Content-Type', 'application/json; charset=utf-8');  
     return this.http.post("http://localhost:8000/create/contact", formData, { headers: headers })  
       .subscribe((res: Response) => {  
-        console.log("############",res);
       }); 
   }
 }

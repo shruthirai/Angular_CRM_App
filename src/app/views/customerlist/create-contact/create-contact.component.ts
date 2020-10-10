@@ -46,7 +46,6 @@ export class CreateContactComponent implements OnInit {
   }
 
   saveContact() {
-  console.log("ehehheheh")
     if (this.contactForm.valid) {
       this.addedContact.emit(this.contactForm.value);
       this.closeContactModalDialog();
@@ -57,12 +56,5 @@ export class CreateContactComponent implements OnInit {
 
   customerChange(e){
     console.log(e.target.value)
-    /*this.customerList.filter(element => {
-        if(element.name == e.target.value){
-          console.log(element.states[0],"first state")
-          this.states = element.states;
-        }
-      });
-    }*/
   }
 }

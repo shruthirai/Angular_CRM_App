@@ -10,27 +10,8 @@ import { UUID } from 'angular2-uuid';
 })
 export class CustomerlistComponent implements OnInit {
   customerList = [];
-  isEdit = false;
-  selectedId;
-    constructor(private _customerSVC: CustomerService, private router: Router ) { }
-    editItem(item) {
-      this.selectedId = item.id;
-      this.isEdit = true;
-    }
-
-  cancel() {
-    this.isEdit = false;
-    this.selectedId = '';
-  }
-
-  save() {
-    this.isEdit = false;
-    this.selectedId = '';
-  }
-
-  deleteItem(i) {
-    this.customerList.splice(i, 1);
-  }
+  
+  constructor(private _customerSVC: CustomerService, private router: Router ) { }
 
   display= 'none'; // default 
   display1= 'none'; // default Contact Variable
@@ -38,10 +19,7 @@ export class CustomerlistComponent implements OnInit {
   
   ngOnInit() {
     this._customerSVC.getCustomerList().subscribe((data) => {
-    console.log('****************this.customerList', this.customerList)
-      //this.customerList = data.json();
       this.customerList = data;
-      console.log(this.customerList);
     });
   }
 
@@ -75,30 +53,20 @@ export class CustomerlistComponent implements OnInit {
   }
 
   addCustomer(event) {
-   console.log('****event****', event)
-   event.id = UUID.UUID();
-   this.customerList.push(event);
-   this._customerSVC.saveCustomer(event);
+    event.id = UUID.UUID();
+    this.customerList.push(event);
+    this._customerSVC.saveCustomer(event);
   }
 
   /*  Contact Form */
   addContact(event) {
-  console.log(event);
-   event.id = UUID.UUID();
-   //this.customerList.push(event);
-   this._customerSVC.saveContact(event);
+    event.id = UUID.UUID();
+    this._customerSVC.saveContact(event);
   }
 
   /*  Customer Type Form */
   addCustomerType(event) {
-   event.id = UUID.UUID();
-   //this.customerList.push(event);
-   this._customerSVC.saveCustomerType(event);
-  }
-
-  goHome () {
-   console.log('goHome');
-    /*location.href = '/create-search/create-search.component'; */
-    this.router.navigate(['app']);
+    event.id = UUID.UUID();
+    this._customerSVC.saveCustomerType(event);
   }
 }
