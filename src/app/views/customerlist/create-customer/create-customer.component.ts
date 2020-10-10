@@ -26,13 +26,13 @@ export class CreateCustomerComponent implements OnInit {
       address: new FormControl('', Validators.required),
       postal_address: new FormControl('', Validators.required),
       telephone: new FormControl('', Validators.required),
-      email: new FormControl('', Validators.required)
+      email: new FormControl('', Validators.required),
+      cutomerType: new FormControl('', Validators.required)
     });
 
+    this.customerTypeList = [];
     this._commonSVC.getCustomerTypeList().subscribe((data) => {
-      //this.customerList = data.json();
       this.customerTypeList = data.customer_type;
-      console.log(this.customerTypeList);
     });
 
     this.localFields = { text: 'type', value: 'id' };
@@ -49,7 +49,7 @@ export class CreateCustomerComponent implements OnInit {
     this.displayChange.unsubscribe();
   }
 
-  saveCustomer() {
+  saveCustomer(form) {
     if (this.customerForm.valid) {
       this.addedCustomer.emit(this.customerForm.value);
       this.closeModalDialog();

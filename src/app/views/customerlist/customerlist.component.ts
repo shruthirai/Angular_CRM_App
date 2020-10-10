@@ -40,7 +40,7 @@ export class CustomerlistComponent implements OnInit {
     this._customerSVC.getCustomerList().subscribe((data) => {
     console.log('****************this.customerList', this.customerList)
       //this.customerList = data.json();
-      this.customerList = data.customer;
+      this.customerList = data;
       console.log(this.customerList);
     });
   }
