@@ -1,18 +1,107 @@
-<div class="container-fluid">
-  <div class="row mt-3">
-    <div class="col-lg-12">
-      <h5>Customer</h5>
-      <!--<span class="lead border-bottom p-2"> Customer List</span> -->
-      <table class="table table-bordered table-resposive table-striped">
+<div class="customer-label">
+  <Label>Customer</Label>
+  </div>
+
+<!-- Button trigger modal -->
+<div class="customer-type-button">
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#basicExampleModal">
+    Add Customer Type
+  </button>
+</div>
+
+<div>
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
+      aria-selected="true">Customer Type</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
+      aria-selected="false">Contacts</a>
+    </li>
+  </ul>
+</div>
+
+<div class="tab-content" id="myTabContent">
+  <!-- Customer Type -->
+  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+     <table class="table table-bordered table-resposive table-striped">
         <tr>
           <th>Customer Type</th>
-          <th>Contact Person</th>
+          <th>Action</th>
+        </tr>
+          
+        <tr>
+          <td>Agent</td>
+          <td>
+            <span class="m-1">
+                <i class="far fa-trash-alt" (click)="deleteItem(i)" data-toggle="tooltip" data-placement="right" title="Delete"></i>
+            </span>
+          </td>
         </tr>
         <tr>
-          <td>type</td>
-          <td>name</td>
+          <td>Broker</td>
+          <td>
+            <span class="m-1">
+                <i class="far fa-trash-alt" (click)="deleteItem(i)" data-toggle="tooltip" data-placement="right" title="Delete"></i>
+            </span>
+          </td>
+        </tr>
+        <tr>
+          <td>Shipping Company</td>
+          <td>
+            <span class="m-1">
+                <i class="far fa-trash-alt" (click)="deleteItem(i)" data-toggle="tooltip" data-placement="right" title="Delete"></i>
+            </span>
+          </td>
         </tr>
       </table>
+
+  </div>
+
+  <!-- Contact Type -->
+  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+    <table class="table table-bordered table-resposive table-striped">
+      <tr>
+        <th>Contact</th>
+      </tr>  
+      <tr>
+        <td>Agent</td>
+      <tr>
+        <td>Broker</td>
+      </tr>
+      <tr>
+        <td>Shipping Company</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="basicExampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Customer Type</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="customerTypeForm">
+          <div class="row form-group">
+            <div class="col-lg-12">
+              <label for="first Name"> Customer Type</label><br />
+              <ejs-multiselect id='localData' #local [dataSource]='customerTypeList' [fields]='localFields' [placeholder]='localWaterMark'></ejs-multiselect>   
+            </div><br />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="saveCustomerType(customerTypeForm.value)">Save</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="closeCustomerTypeModalDialog()">Close</button>
+      </div>
     </div>
   </div>
 </div>

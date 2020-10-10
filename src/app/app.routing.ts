@@ -10,21 +10,13 @@ const route: Routes = [
     {
         path: 'app', component: HomeComponent,
         children: [
-            {path: 'customerlist', component: CustomerlistComponent}
+            { path: 'customerlist', component: CustomerlistComponent
+            }
         ],
     },
-    { path: '**', redirectTo: '/app/customerlist', pathMatch: 'full' },
-    { path: '', redirectTo: '/app/customerlist', pathMatch: 'full' },
-   /* { path: 'item', redirectTo: '/app/customerlist/create-search', pathMatch: 'full' }, */
-    { path: 'customer', component: CreateSearchComponent }
+    {path: 'customer/:id', component: CreateSearchComponent},
+    /* { path: '**', redirectTo: '/app/customerlist', pathMatch: 'full' }, */
+    { path: '', redirectTo: '/app/customerlist', pathMatch: 'full' }
 ];
 
 export const routingModule: ModuleWithProviders = RouterModule.forRoot(route);
-
-/*
-@NgModule({
-  imports: [ RouterModule.forRoot(route) ],
-  exports: [ RouterModule ]
-})
-export class routingModule {}
-*/

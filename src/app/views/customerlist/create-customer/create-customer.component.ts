@@ -29,11 +29,6 @@ export class CreateCustomerComponent implements OnInit {
       email: new FormControl('', Validators.required)
     });
 
-    this.customerTypeList = [
-        { Name: 'Agent', Code: 'AG' },
-        { Name: 'Broker', Code: 'BR' },
-        { Name: 'Shipping Company', Code: 'SH' }
-        ];
     this._commonSVC.getCustomerTypeList().subscribe((data) => {
       //this.customerList = data.json();
       this.customerTypeList = data.customer_type;

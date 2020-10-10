@@ -1,19 +1,38 @@
-.modal-content {
-  overflow: auto !important;
-  max-height: 100vh !important;
-  background-color: whitesmoke !important;
+.customer-label {
+  text-align: center;
+  display: block;
+  margin-top: 40px;
+  font-weight: 600;
+  font-size: larger;
 }
 
-.modal-header-label {
-  margin-left: 156px;
-  font-weight: 700;
+.nav-tabs {
+  margin-top: 60px;
+  margin-left: 20px;
 }
 
-.modal-header {
-	border-bottom: 1px solid slategrey;
+.tab-content {
+  margin-left: 20px;
+  margin-top: 20px;
 }
 
-.modal-body label {
-  margin: 15px 0;
+.customer-type-button {
+  margin-right: 30px;
   font-weight: 500;
+  float:right;
 }
+
+table {
+  width: 30%;
+}
+
+table th {
+  font-weight: 700
+}
+
+
+
+
+
+
+

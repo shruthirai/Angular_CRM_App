@@ -36,9 +36,9 @@ export class CustomerlistComponent implements OnInit {
   display1= 'none'; // default Contact Variable
   display2= 'none'; // default Customer Type Variable
   
-
   ngOnInit() {
     this._customerSVC.getCustomerList().subscribe((data) => {
+    console.log('****************this.customerList', this.customerList)
       //this.customerList = data.json();
       this.customerList = data.customer;
       console.log(this.customerList);
@@ -96,11 +96,9 @@ export class CustomerlistComponent implements OnInit {
    this._customerSVC.saveCustomerType(event);
   }
 
-  
   goHome () {
    console.log('goHome');
-   /*this._router.navigate(['../customer']);*/
-    this.router.navigate(['customer']);
+    /*location.href = '/create-search/create-search.component'; */
+    this.router.navigate(['app']);
   }
-  
 }
