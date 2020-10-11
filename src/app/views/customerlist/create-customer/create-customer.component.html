@@ -60,8 +60,11 @@
           </div>
         </form>
       </div>
+     
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="saveCustomer(customerForm.value)">Save</button>
+        <div>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="saveCustomer(customerForm.value)" [disabled]='this.customerForm.invalid'>Save</button>
+        </div>
         <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="closeModalDialog()">Close</button>
       </div>
     </div>

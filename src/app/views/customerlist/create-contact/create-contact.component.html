@@ -63,7 +63,7 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="saveContact(contactForm.value)">Save</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="saveContact(contactForm.value)" [disabled]='this.contactForm.invalid'>Save</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="closeContactModalDialog()">Close</button>
       </div>
     </div>

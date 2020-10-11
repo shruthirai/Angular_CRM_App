@@ -1,4 +1,3 @@
-/*
 export class Customer {
   id: number;
   email: string;
@@ -16,4 +15,4 @@ export class Customer {
       Object.assign(this, values);
   }
 }
-*/
+

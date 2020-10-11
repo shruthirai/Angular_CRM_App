@@ -8,6 +8,7 @@ import { UUID } from 'angular2-uuid';
   templateUrl: './customerlist.component.html',
   styleUrls: ['./customerlist.component.css']
 })
+
 export class CustomerlistComponent implements OnInit {
   customerList = [];
   
@@ -52,6 +53,7 @@ export class CustomerlistComponent implements OnInit {
     this.display2 = event; // Set block css
   }
 
+  /*  Create Customer Form */
   addCustomer(event) {
     event.id = UUID.UUID();
     this.customerList.push(event);
@@ -60,7 +62,7 @@ export class CustomerlistComponent implements OnInit {
 
   /*  Contact Form */
   addContact(event) {
-  console.log(event)
+    console.log(event)
     event.id = UUID.UUID();
     this._customerSVC.saveContact(event);
   }

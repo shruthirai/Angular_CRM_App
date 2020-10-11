@@ -7,6 +7,7 @@ import { CommonServiceService } from '../../../service/common-service.service';
   templateUrl: './create-customer-type.component.html',
   styleUrls: ['./create-customer-type.component.css']
 })
+
 export class CreateCustomerTypeComponent implements OnInit {
   customerTypeForm: any;
   @Input() display;
@@ -15,6 +16,7 @@ export class CreateCustomerTypeComponent implements OnInit {
   constructor(private _commonSVC: CommonServiceService) { }
 
   ngOnInit() {
+
     // Login Validation
     this.customerTypeForm = new FormGroup({
       customer_type: new FormControl('', Validators.required)
@@ -22,6 +24,7 @@ export class CreateCustomerTypeComponent implements OnInit {
   }
 
   closeCustomerTypeModalDialog() {
+    //this.customerTypeForm.reset();
     this.display = 'none'; // set none css after close dialog
     this.displayChange.emit(this.display);
   }
@@ -35,9 +38,9 @@ export class CreateCustomerTypeComponent implements OnInit {
     if (this.customerTypeForm.valid) {
       this.addedCustomerType.emit(this.customerTypeForm.value);
       this.closeCustomerTypeModalDialog();
+      //this.customerTypeForm.reset();
     } else {
       this._commonSVC.validateAllFields(this.customerTypeForm);
     }
-    
   }
 }

@@ -2,16 +2,30 @@ import { Injectable } from '@angular/core';
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';  
 import { Http, Response, Headers } from '@angular/http';  
 import 'rxjs/Rx'; 
-
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { CommonServiceService } from '../service/common-service.service';
 
 @Injectable()
-export class CustomerService {
+export class CustomerService implements OnInit {
+  customerForm: any;
+  constructor(private http: Http, private _commonSVC: CommonServiceService) {  }
 
-  constructor(private http: Http) {  }
+  ngOnInit() {
+    // Login Validation
+    this.customerForm = new FormGroup({
+      name: new FormControl('', Validators.required),
+      company_name: new FormControl('', Validators.required),
+      address: new FormControl('', Validators.required),
+      postal_address: new FormControl('', Validators.required),
+      telephone: new FormControl('', Validators.required),
+      email: new FormControl('', Validators.required),
+      cutomerType: new FormControl('', Validators.required)
+    });
+  }
 
-  /* Get from database to UI */
+  /* Get from backend to UI */
   getCustomerList() {
-  	let self = this;  
+  	let self = this;
     return this.http.get('http://localhost:8000/customers')  
       .map((res: Response) => {
         let data = res.json();
@@ -24,6 +38,7 @@ export class CustomerService {
             "name": d.name,
             "postal_address": d.postal_address,
             "serial_number": d.serial_number,
+            "company_name": d.company_name,
             "telephone": d.telephone,
             "customer_type": d.customer_type.split()
           };
@@ -33,7 +48,7 @@ export class CustomerService {
     });
   }
 
-  /* Post from UI create form to database - Customer */
+  /* Post from UI create form to backend - Customer */
   saveCustomer(data) {
     let formData = {
       "name": data.name,
@@ -41,17 +56,18 @@ export class CustomerService {
       "address":  data.address,
       "postal_address": data.postal_address,
       "telephone": data.telephone,
-      "email": data.email
+      "email": data.email,
+      "company_name": data.company_name
     };
 
     let headers = new Headers();  
     headers.append('Content-Type', 'application/json; charset=utf-8');  
     return this.http.post("http://localhost:8000/create/customer", formData, { headers: headers })  
       .subscribe((res: Response) => {  
-      }); 
+    }); 
   }
 
-  /* Post from UI create form to database - Customer type */
+  /* Post from UI create form to backend - Customer type */
   saveCustomerType(data) {
     let formData = {
       "type": data.customer_type
@@ -61,10 +77,10 @@ export class CustomerService {
     headers.append('Content-Type', 'application/json; charset=utf-8');  
     return this.http.post("http://localhost:8000/create/customer_type", formData, { headers: headers })  
       .subscribe((res: Response) => {  
-      }); 
+    }); 
   }
 
-  /* Post from UI create form to database - Contact */
+  /* Post from UI create form to backend - Contact */
   saveContact(data) {
     let formData = {
       first_name: data.first_name,
@@ -74,11 +90,11 @@ export class CustomerService {
       email: data.email,
       customer_id: data.customer_id === 'Select' ? null : parseInt(data.customer_id)
     };
-console.log(formData)
+
     let headers = new Headers();  
     headers.append('Content-Type', 'application/json; charset=utf-8');  
     return this.http.post("http://localhost:8000/create/contact", formData, { headers: headers })  
       .subscribe((res: Response) => {  
-      }); 
+    }); 
   }
 }

@@ -23,8 +23,7 @@ export class CommonServiceService {
     let self = this;  
     return this.http.get('http://localhost:8000/customer_type')  
       .map((res: Response) => {
-        console.log(res.json());
-      return res.json();
+        return res.json();
     });
   }
 }

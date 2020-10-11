@@ -10,6 +10,7 @@ import { UUID } from 'angular2-uuid';
   templateUrl: './create-contact.component.html',
   styleUrls: ['./create-contact.component.css']
 })
+
 export class CreateContactComponent implements OnInit {
   contactForm: any;
   customerList = [];
@@ -20,6 +21,7 @@ export class CreateContactComponent implements OnInit {
   constructor(private _commonSVC: CommonServiceService, private _customerSVC: CustomerService) { }
 
   ngOnInit() {
+  
     // Login Validation
     this.contactForm = new FormGroup({
       last_name: new FormControl('', Validators.required),
@@ -30,13 +32,13 @@ export class CreateContactComponent implements OnInit {
     });
 
     this._customerSVC.getCustomerList().subscribe((data) => {
-      //this.customerList = data.json();
       this.customerList = data;
       console.log(this.customerList);
     });
   }
 
   closeContactModalDialog() {
+    //this.contactForm.reset();
     this.display = 'none'; // set none css after close dialog
     this.displayChange.emit(this.display);
   }
@@ -58,7 +60,6 @@ export class CreateContactComponent implements OnInit {
   }
 
   customerChange(e){
-    console.log(e.target.value);
     this.customer_id = e.target.value;
   }
 }

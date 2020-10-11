@@ -30,11 +30,16 @@ import { SearchPipe } from './search.pipe';
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule, routingModule, ReactiveFormsModule, FormsModule,MultiSelectAllModule,
+    BrowserAnimationsModule,
+    routingModule,
+    ReactiveFormsModule,
+    FormsModule,
+    MultiSelectAllModule,
     HttpModule
   ],
   exports: [RouterModule],
   providers: [CommonServiceService, CustomerService],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
