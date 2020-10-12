@@ -30,9 +30,7 @@ export class CreateSearchComponent implements OnInit {
     });
 
     this._commonSVC.getCustomerTypeList().subscribe((data) => {
-      //this.customerList = data.json();
       this.customerTypeList = data.customer_type;
-      console.log(this.customerTypeList);
     });
 
     this._customerSVC.getSelectedCustomerTypeList(this.customer_id).subscribe((data) => {
@@ -71,18 +69,31 @@ export class CreateSearchComponent implements OnInit {
   }
 
   saveCustomerType(value) {
-    console.log('******delete', this.customer_type_id)
     this._customerSVC.addCustomerType(this.customer_id, this.customer_type_id).subscribe((data) => {
-      //this.selectedCustomerTypeList.splice(i, 1);
+      //console.log(data.json())
+      let item = data.json();
+      this.selectedCustomerTypeList.push(item.customer_type[0]);
     });
   }
 
   typeChange(value) {
-    console.log('******delete', value.target.value)
     this.customer_type_id = value.target.value;
   }
 
   closeCustomerTypeModalDialog() {
     this.display = 'none'; // set none css after close dialog
+  }
+
+  addTypeClick() {
+    /*console.log(this.customerTypeList)
+    console.log(this.selectedCustomerTypeList)
+    var that = this;
+    this.selectedCustomerTypeList.forEach(function(item) {
+      let index = that.customerTypeList.findIndex(function(d) {
+        return item.id == d.id;
+      });
+      console.log(index);
+      that.customerTypeList.splice(index, 1);
+    })*/
   }
 }

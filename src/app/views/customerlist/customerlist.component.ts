@@ -56,13 +56,14 @@ export class CustomerlistComponent implements OnInit {
   /*  Create Customer Form */
   addCustomer(event) {
     event.id = UUID.UUID();
-    this.customerList.push(event);
-    this._customerSVC.saveCustomer(event);
+    this._customerSVC.saveCustomer(event).subscribe((data) => {
+        let item = data.json();
+        this.customerList.push(item.results[0]);
+    });
   }
 
   /*  Contact Form */
   addContact(event) {
-    console.log(event)
     event.id = UUID.UUID();
     this._customerSVC.saveContact(event);
   }
