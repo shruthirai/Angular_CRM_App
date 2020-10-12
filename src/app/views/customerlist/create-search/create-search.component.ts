@@ -15,6 +15,7 @@ export class CreateSearchComponent implements OnInit {
   localFields = {};
   display= 'none';
   customerSearchList = [];
+  selectedCustomerTypeList = [];
   
   constructor(private _commonSVC: CommonServiceService, private _customerSVC: CustomerService) { }
 
@@ -29,9 +30,8 @@ export class CreateSearchComponent implements OnInit {
       console.log(this.customerTypeList);
     });
 
-    this._customerSVC.getCustomerSearchList().subscribe((data) => {
-      console.log('********', data.json())
-      this.customerSearchList = data.json();
+    this._customerSVC.getSelectedCustomerTypeList(15).subscribe((data) => {
+      this.selectedCustomerTypeList = data.customer_type;
 
     });
 
