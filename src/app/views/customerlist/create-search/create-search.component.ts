@@ -16,6 +16,7 @@ export class CreateSearchComponent implements OnInit {
   display= 'none';
   customerSearchList = [];
   selectedCustomerTypeList = [];
+  selectedCustomerContactList = [];
   
   constructor(private _commonSVC: CommonServiceService, private _customerSVC: CustomerService) { }
 
@@ -33,6 +34,10 @@ export class CreateSearchComponent implements OnInit {
     this._customerSVC.getSelectedCustomerTypeList(15).subscribe((data) => {
       this.selectedCustomerTypeList = data.customer_type;
 
+    });
+
+    this._customerSVC.getSelectedCustomerContactList(15).subscribe((data) => {
+      this.selectedCustomerContactList = data.contact;
     });
 
     this.localFields = { text: 'type', value: 'id' };

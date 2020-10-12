@@ -107,4 +107,42 @@ export class CustomerService implements OnInit {
         return data;
     });
   }
+
+  /* Get for create search table */
+  getSelectedCustomerContactList(customer_id) {
+    let self = this;
+    return this.http.get('http://localhost:8000/customer/contact/' + customer_id)  
+      .map((res: Response) => {
+        let data = res.json();
+        return data;
+    });
+  }
+
+  /* Get for create search table */
+  removeCustomerType(customer_id, type) {
+    let formData = {
+      first_name: customer_id,
+      last_name: type
+    };
+
+    let headers = new Headers();  
+    headers.append('Content-Type', 'application/json; charset=utf-8');  
+    return this.http.post("http://localhost:8000/customer/removeType", formData, { headers: headers })  
+      .subscribe((res: Response) => {  
+    }); 
+  }
+
+  /* Get for create search table */
+  addCustomerType(customer_id, type) {
+    let formData = {
+      first_name: customer_id,
+      last_name: type
+    };
+
+    let headers = new Headers();  
+    headers.append('Content-Type', 'application/json; charset=utf-8');  
+    return this.http.post("http://localhost:8000/customer/addType", formData, { headers: headers })  
+      .subscribe((res: Response) => {  
+    }); 
+  }
 }
