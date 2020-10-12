@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { RouterModule, Routes, Router } from '@angular/router';
+import { RouterModule, Routes, Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CommonServiceService } from '../../../service/common-service.service';
 import { CustomerService } from '../../../service/customer.service';
@@ -12,6 +12,7 @@ import { CustomerService } from '../../../service/customer.service';
 export class CreateSearchComponent implements OnInit {
   customerTypeForm: any;
   customerTypeList: any;
+  customer_id: any;
   localFields = {};
   display= 'none';
   customerSearchList = [];
@@ -19,9 +20,10 @@ export class CreateSearchComponent implements OnInit {
   selectedCustomerContactList = [];
   selectedContactList = [];
   
-  constructor(private _commonSVC: CommonServiceService, private _customerSVC: CustomerService) { }
+  constructor(private _commonSVC: CommonServiceService, private _customerSVC: CustomerService, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.customer_id = this.route.snapshot.params.id;
     this.customerTypeForm = new FormGroup({
       customer_type: new FormControl('', Validators.required)
     });
@@ -32,7 +34,7 @@ export class CreateSearchComponent implements OnInit {
       console.log(this.customerTypeList);
     });
 
-    this._customerSVC.getSelectedCustomerTypeList(15).subscribe((data) => {
+    this._customerSVC.getSelectedCustomerTypeList(this.customer_id).subscribe((data) => {
       this.selectedCustomerTypeList = data.customer_type;
     });
  
@@ -42,7 +44,7 @@ export class CreateSearchComponent implements OnInit {
     });
     */
 
-    this._customerSVC.getSelectedCustomerContactList(15).subscribe((data) => {
+    this._customerSVC.getSelectedCustomerContactList(this.customer_id).subscribe((data) => {
       this.selectedCustomerContactList = data.contact;
     });
 
@@ -51,7 +53,7 @@ export class CreateSearchComponent implements OnInit {
   
   deleteItem(i, type_id) {
     console.log('******delete', i, type_id)
-    this._customerSVC.removeCustomerType(15, type_id).subscribe((data) => {
+    this._customerSVC.removeCustomerType(this.customer_id, type_id).subscribe((data) => {
       this.selectedCustomerTypeList.splice(i, 1);
     });
   }
