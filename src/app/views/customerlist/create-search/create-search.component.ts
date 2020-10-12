@@ -51,8 +51,7 @@ export class CreateSearchComponent implements OnInit {
     this.localFields = { text: 'type', value: 'id' };
   }
   
-  deleteItem(i, type_id) {
-    console.log('******delete', i, type_id)
+  deleteItem(i, type_id, item) {
     this._customerSVC.removeCustomerType(this.customer_id, type_id).subscribe((data) => {
       this.selectedCustomerTypeList.splice(i, 1);
     });

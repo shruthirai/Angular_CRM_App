@@ -37,8 +37,13 @@
         <tr *ngFor="let item of selectedCustomerTypeList; let i = index">
           <td>{{item.type}}</td>
           <td>
+            <!--
+            <span class="m-1" *ngIf="selectedCustomerTypeList?.length > 1">
+                <i class="far fa-trash-alt" (click)="deleteItem(i, item.id, item)" data-toggle="tooltip" data-placement="right" title="Delete"></i>
+            </span>
+            -->
             <span class="m-1">
-                <i class="far fa-trash-alt" (click)="deleteItem(i, item.id)" data-toggle="tooltip" data-placement="right" title="Delete"></i>
+                <i class="far fa-trash-alt" (click)="deleteItem(i, item.id, item)" data-toggle="tooltip" data-placement="right" title="Delete"></i>
             </span>
           </td>
         </tr>
@@ -72,7 +77,7 @@
   <a href="customerlist" [routerLink]="['']" class="nav-link back-home active">Back to Customer List</a>
 </div>
 
-<!-- Modal -->
+<!-- Modal for add customer tyep -->
 <div class="modal fade" id="basicExampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
   aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -85,12 +90,19 @@
       </div>
       <div class="modal-body">
         <form [formGroup]="customerTypeForm">
-          <div class="row form-group">
-            <div class="col-lg-12">
-              <label for="first Name"> Customer Type</label><br />
-              <ejs-multiselect id='localData' #local [dataSource]='customerTypeList' [fields]='localFields' [placeholder]='localWaterMark'></ejs-multiselect>   
-            </div><br />
+          <div class="col-lg-12">
+            <label for="customer Type">Customer Type</label>
+            <select 
+              name="customerTypeList"
+              id="customerTypeList"
+            >
+              <option>Select</option>
+              <option *ngFor="let item of customerTypeList" [ngValue]="item.id" [value]="item.id">
+                {{item.type}}
+              </option>
+            </select>
           </div>
+
         </form>
       </div>
       <div class="modal-footer">
