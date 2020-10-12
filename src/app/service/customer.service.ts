@@ -25,7 +25,7 @@ export class CustomerService implements OnInit {
 
   /* Get from backend to UI */
   getCustomerList() {
-  	let self = this;
+    let self = this;
     return this.http.get('http://localhost:8000/customers')  
       .map((res: Response) => {
         let data = res.json();
