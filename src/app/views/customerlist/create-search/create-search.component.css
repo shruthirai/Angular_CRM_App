@@ -30,6 +30,10 @@ table th {
   font-weight: 700
 }
 
+table td {
+  font-weight: normal
+}
+
 .back-home {
   /*text-align: center;*/
   margin-top: 25px;
@@ -41,6 +45,16 @@ table th {
   font-size: large !important;
   margin: 0 auto !important;
   padding: 20px !important;
+}
+
+.alert-primary {
+  font-size: initial !important;
+  color: red;
+  font-weight: 700;
+  background-color: whitesmoke !important;
+  border-radius: none !important;
+  border-color: whitesmoke !important;
+  margin-left: 131px;
 }
 
 

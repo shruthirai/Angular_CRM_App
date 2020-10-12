@@ -69,6 +69,15 @@
         <td>{{contact.phone}}</td>
         <td>{{contact.email}}</td>
       </tr>
+
+      <tr *ngIf="! ((selectedCustomerContactList && selectedCustomerContactList.length))">
+        <td colspan=6>
+          <div class="alert alert-primary" role="alert">
+            No contacts to display !
+          </div>
+        </td>
+      </tr>
+
     </table>
   </div>
 </div>

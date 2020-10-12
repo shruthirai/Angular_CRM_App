@@ -16,7 +16,6 @@ export class CreateCustomerTypeComponent implements OnInit {
   constructor(private _commonSVC: CommonServiceService) { }
 
   ngOnInit() {
-
     // Login Validation
     this.customerTypeForm = new FormGroup({
       customer_type: new FormControl('', Validators.required)

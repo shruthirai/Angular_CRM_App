@@ -52,10 +52,22 @@ export class CreateSearchComponent implements OnInit {
     this.localFields = { text: 'type', value: 'id' };
   }
   
+  /*
   deleteItem(i, type_id, item) {
     this._customerSVC.removeCustomerType(this.customer_id, type_id).subscribe((data) => {
       this.selectedCustomerTypeList.splice(i, 1);
     });
+  }
+  */
+
+  deleteItem(i, type_id, item) {
+    if ((this.selectedCustomerTypeList.length) > 1) {
+      this._customerSVC.removeCustomerType(this.customer_id, type_id).subscribe((data) => {
+        this.selectedCustomerTypeList.splice(i, 1);
+      });
+    } else {
+      alert("Cannot delete Customer Type since Customer should have atleast 1 Customer Type!");
+    }
   }
 
   saveCustomerType(value) {
