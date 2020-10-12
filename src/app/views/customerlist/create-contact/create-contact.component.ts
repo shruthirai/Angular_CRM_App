@@ -28,7 +28,7 @@ export class CreateContactComponent implements OnInit {
       first_name: new FormControl('', Validators.required),
       title: new FormControl('', Validators.required),
       mobile_phone: new FormControl('', Validators.required),
-      personal_email: new FormControl('', Validators.required)
+      email: new FormControl('', Validators.required)
     });
 
     this._customerSVC.getCustomerList().subscribe((data) => {

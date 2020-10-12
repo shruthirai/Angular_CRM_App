@@ -97,4 +97,10 @@ export class CustomerService implements OnInit {
       .subscribe((res: Response) => {  
     }); 
   }
+
+  /* Get for create search table */
+  getCustomerSearchList() {
+    console.log('*********', this.http.get('../../../assets/customersearchlist.json'))
+    return this.http.get('../assets/customerSearchlist.json');
+  }
 }

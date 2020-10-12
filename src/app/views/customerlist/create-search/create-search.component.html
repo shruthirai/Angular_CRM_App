@@ -31,27 +31,10 @@
      <table class="table table-bordered table-resposive table-striped">
         <tr>
           <th>Customer Type</th>
-          <th>Action</th>
         </tr>
           
-        <tr>
-          <td>Agent</td>
-          <td>
-            <span class="m-1">
-                <i class="far fa-trash-alt" (click)="deleteItem(i)" data-toggle="tooltip" data-placement="right" title="Delete"></i>
-            </span>
-          </td>
-        </tr>
-        <tr>
-          <td>Broker</td>
-          <td>
-            <span class="m-1">
-                <i class="far fa-trash-alt" (click)="deleteItem(i)" data-toggle="tooltip" data-placement="right" title="Delete"></i>
-            </span>
-          </td>
-        </tr>
-        <tr>
-          <td>Shipping Company</td>
+        <tr *ngFor="let item of customerSearchList; let i = index">
+          <td>{{item.fname}}</td>
           <td>
             <span class="m-1">
                 <i class="far fa-trash-alt" (click)="deleteItem(i)" data-toggle="tooltip" data-placement="right" title="Delete"></i>
@@ -66,15 +49,16 @@
   <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
     <table class="table table-bordered table-resposive table-striped">
       <tr>
-        <th>Contact</th>
-      </tr>  
-      <tr>
-        <td>Agent</td>
-      <tr>
-        <td>Broker</td>
+        <th>Contact Type</th>
       </tr>
-      <tr>
-        <td>Shipping Company</td>
+
+      <tr *ngFor="let item of customerSearchList; let i = index">
+        <td>{{item.fname}}</td>
+          <td>
+            <span class="m-1">
+                <i class="far fa-trash-alt" (click)="deleteItem(i)" data-toggle="tooltip" data-placement="right" title="Delete"></i>
+            </span>
+          </td>
       </tr>
     </table>
   </div>

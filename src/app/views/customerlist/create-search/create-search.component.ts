@@ -2,6 +2,7 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { RouterModule, Routes, Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CommonServiceService } from '../../../service/common-service.service';
+import { CustomerService } from '../../../service/customer.service';
 
 @Component({
   selector: 'app-create-search',
@@ -13,8 +14,9 @@ export class CreateSearchComponent implements OnInit {
   customerTypeList: any;
   localFields = {};
   display= 'none';
+  customerSearchList = [];
   
-  constructor(private _commonSVC: CommonServiceService) { }
+  constructor(private _commonSVC: CommonServiceService, private _customerSVC: CustomerService) { }
 
   ngOnInit() {
     this.customerTypeForm = new FormGroup({
@@ -25,6 +27,12 @@ export class CreateSearchComponent implements OnInit {
       //this.customerList = data.json();
       this.customerTypeList = data.customer_type;
       console.log(this.customerTypeList);
+    });
+
+    this._customerSVC.getCustomerSearchList().subscribe((data) => {
+      console.log('********', data.json())
+      this.customerSearchList = data.json();
+
     });
 
     this.localFields = { text: 'type', value: 'id' };
