@@ -13,6 +13,7 @@ export class CreateSearchComponent implements OnInit {
   customerTypeForm: any;
   customerTypeList: any;
   customer_id: any;
+  customer_type_id: any;
   localFields = {};
   display= 'none';
   customerSearchList = [];
@@ -58,7 +59,15 @@ export class CreateSearchComponent implements OnInit {
   }
 
   saveCustomerType(value) {
-    console.log('******delete', value)
+    console.log('******delete', this.customer_type_id)
+    this._customerSVC.addCustomerType(this.customer_id, this.customer_type_id).subscribe((data) => {
+      //this.selectedCustomerTypeList.splice(i, 1);
+    });
+  }
+
+  typeChange(value) {
+    console.log('******delete', value.target.value)
+    this.customer_type_id = value.target.value;
   }
 
   closeCustomerTypeModalDialog() {

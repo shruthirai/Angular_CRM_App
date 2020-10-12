@@ -95,6 +95,7 @@
             <select 
               name="customerTypeList"
               id="customerTypeList"
+              (change)="typeChange($event)"
             >
               <option>Select</option>
               <option *ngFor="let item of customerTypeList" [ngValue]="item.id" [value]="item.id">

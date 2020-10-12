@@ -139,8 +139,6 @@ export class CustomerService implements OnInit {
 
     let headers = new Headers();  
     headers.append('Content-Type', 'application/json; charset=utf-8');  
-    return this.http.post("http://localhost:8000/customer/addType", formData, { headers: headers })  
-      .subscribe((res: Response) => {  
-    }); 
+    return this.http.post("http://localhost:8000/customer/addType", formData, { headers: headers })
   }
 }
