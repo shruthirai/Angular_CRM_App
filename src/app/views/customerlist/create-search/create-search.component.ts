@@ -37,6 +37,11 @@ export class CreateSearchComponent implements OnInit {
 
     this.localFields = { text: 'type', value: 'id' };
   }
+  
+  deleteItem(i) {
+    console.log('******delete')
+    this.customerSearchList.splice(i, 1);
+  }
 
   closeCustomerTypeModalDialog() {
     this.display = 'none'; // set none css after close dialog
