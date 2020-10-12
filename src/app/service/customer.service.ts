@@ -101,6 +101,6 @@ export class CustomerService implements OnInit {
   /* Get for create search table */
   getCustomerSearchList() {
     console.log('*********', this.http.get('../../../assets/customersearchlist.json'))
-    return this.http.get('../assets/customerSearchlist.json');
+    return this.http.get('../../../assets/customerSearchList.json');
   }
 }
