@@ -121,22 +121,20 @@ export class CustomerService implements OnInit {
   /* Get for create search table */
   removeCustomerType(customer_id, type) {
     let formData = {
-      first_name: customer_id,
-      last_name: type
+      customer_id: customer_id,
+      type: type
     };
 
     let headers = new Headers();  
     headers.append('Content-Type', 'application/json; charset=utf-8');  
-    return this.http.post("http://localhost:8000/customer/removeType", formData, { headers: headers })  
-      .subscribe((res: Response) => {  
-    }); 
+    return this.http.post("http://localhost:8000/customer/removeType", formData, { headers: headers }); 
   }
 
   /* Get for create search table */
   addCustomerType(customer_id, type) {
     let formData = {
-      first_name: customer_id,
-      last_name: type
+      customer_id: customer_id,
+      type: type
     };
 
     let headers = new Headers();  

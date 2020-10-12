@@ -38,7 +38,7 @@
           <td>{{item.type}}</td>
           <td>
             <span class="m-1">
-                <i class="far fa-trash-alt" (click)="deleteItem(i)" data-toggle="tooltip" data-placement="right" title="Delete"></i>
+                <i class="far fa-trash-alt" (click)="deleteItem(i, item.id)" data-toggle="tooltip" data-placement="right" title="Delete"></i>
             </span>
           </td>
         </tr>
@@ -57,11 +57,11 @@
         <th>Personal Email Address</th>
       </tr>
 
-      <tr *ngFor="let contact of selectedContactList; let i = index">
+      <tr *ngFor="let contact of selectedCustomerContactList; let i = index">
         <td>{{contact.last_name}}</td>
         <td>{{contact.first_name}}</td>
         <td>{{contact.title}}</td>
-        <td>{{contact.mobile_phone}}</td>
+        <td>{{contact.phone}}</td>
         <td>{{contact.email}}</td>
       </tr>
     </table>

@@ -32,7 +32,7 @@ export class CreateSearchComponent implements OnInit {
       console.log(this.customerTypeList);
     });
 
-    this._customerSVC.getSelectedCustomerTypeList(60).subscribe((data) => {
+    this._customerSVC.getSelectedCustomerTypeList(15).subscribe((data) => {
       this.selectedCustomerTypeList = data.customer_type;
     });
  
@@ -49,9 +49,15 @@ export class CreateSearchComponent implements OnInit {
     this.localFields = { text: 'type', value: 'id' };
   }
   
-  deleteItem(i) {
-    console.log('******delete')
-    this.customerSearchList.splice(i, 1);
+  deleteItem(i, type_id) {
+    console.log('******delete', i, type_id)
+    this._customerSVC.removeCustomerType(15, type_id).subscribe((data) => {
+      this.selectedCustomerTypeList.splice(i, 1);
+    });
+  }
+
+  saveCustomerType(value) {
+    console.log('******delete', value)
   }
 
   closeCustomerTypeModalDialog() {
