@@ -2,14 +2,7 @@
     <div class="header">CRM Application</div>
   </nav>
 <div class="customer-label">
-  <Label>Customer</Label>
-  </div>
-
-<!-- Button trigger modal -->
-<div class="customer-type-button">
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#basicExampleModal">
-    Add Customer Type
-  </button>
+  <Label>Customer Information</Label>
 </div>
 
 <div>
@@ -28,6 +21,12 @@
 <div class="tab-content" id="myTabContent">
   <!-- Customer Type -->
   <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+    <!-- Button trigger modal -->
+        <div class="customer-type-button">
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#basicExampleModal">
+            Add Customer Type
+          </button>
+        </div>
      <table class="table table-bordered table-resposive table-striped">
         <tr>
           <th>Customer Type</th>
@@ -106,8 +105,7 @@
               id="customerTypeList"
               (change)="typeChange($event)"
             >
-              <option>Select</option>
-              <option *ngFor="let item of customerTypeList" [ngValue]="item.id" [value]="item.id">
+              <option *ngFor="let item of customerTypeList" [ngValue]="item.id" [value]="item.id" required>
                 {{item.type}}
               </option>
             </select>
@@ -116,7 +114,7 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="saveCustomerType(customerTypeForm.value)">Save</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="saveCustomerType(customerTypeForm.value)" >Save</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="closeCustomerTypeModalDialog()">Close</button>
       </div>
     </div>
