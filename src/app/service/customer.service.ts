@@ -107,4 +107,16 @@ export class CustomerService implements OnInit {
         return data;
     });
   }
+
+  /* Get for contact search table */
+  getselectedContactList(customer_id) {
+    let self = this;
+    /*
+    return this.http.get('http://localhost:8000/customer/customer_type/' + customer_id)  
+      .map((res: Response) => {
+        let data = res.json();
+        return data;
+    });
+    */
+  } 
 }
