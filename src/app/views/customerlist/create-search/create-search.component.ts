@@ -12,6 +12,7 @@ import { CustomerService } from '../../../service/customer.service';
 export class CreateSearchComponent implements OnInit {
   customerTypeForm: any;
   customerTypeList: any;
+  dropdownCustomerTypeList: any;
   customer_id: any;
   customer_type_id: any;
   localFields = {};
@@ -36,12 +37,6 @@ export class CreateSearchComponent implements OnInit {
     this._customerSVC.getSelectedCustomerTypeList(this.customer_id).subscribe((data) => {
       this.selectedCustomerTypeList = data.customer_type;
     });
- 
-    /*
-    this._customerSVC.getselectedContactList().subscribe((data) => {
-      this.selectedContactList = data.contact;
-    });
-    */
 
     this._customerSVC.getSelectedCustomerContactList(this.customer_id).subscribe((data) => {
       this.selectedCustomerContactList = data.contact;
@@ -78,6 +73,7 @@ export class CreateSearchComponent implements OnInit {
 
   typeChange(value) {
     this.customer_type_id = value.target.value;
+    console.log(value.target.value)
   }
 
   closeCustomerTypeModalDialog() {
@@ -85,15 +81,20 @@ export class CreateSearchComponent implements OnInit {
   }
 
   addTypeClick() {
-    /*console.log(this.customerTypeList)
-    console.log(this.selectedCustomerTypeList)
     var that = this;
+    var arraylist = this.customerTypeList.map(function(i){
+      return i;
+    });
     this.selectedCustomerTypeList.forEach(function(item) {
-      let index = that.customerTypeList.findIndex(function(d) {
-        return item.id == d.id;
+      let filterlist = arraylist.filter(function(d) {
+        return item.id !== d.id;
       });
-      console.log(index);
-      that.customerTypeList.splice(index, 1);
-    })*/
+      arraylist = filterlist;
+      console.log("filterlist", filterlist);
+    });
+    if ( arraylist.length > 0 ) {
+      this.customer_type_id = arraylist[0].id;
+    }
+    this.dropdownCustomerTypeList = arraylist;
   }
 }

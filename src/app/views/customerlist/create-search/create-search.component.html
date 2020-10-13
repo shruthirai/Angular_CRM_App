@@ -110,7 +110,7 @@
               id="customerTypeList"
               (change)="typeChange($event)"
             >
-              <option *ngFor="let item of customerTypeList" [ngValue]="item.id" [value]="item.id" required>
+              <option *ngFor="let item of dropdownCustomerTypeList" [ngValue]="item.id" [value]="item.id" required>
                 {{item.type}}
               </option>
             </select>
