@@ -2,16 +2,13 @@
     <div class="header">CRM Application</div>
   </nav>
 <div class="customer-label">
-  <Label>Customer</Label>
+  <Label>Customer Information</Label>
   </div>
 
 <!-- Button trigger modal -->
-<div class="customer-type-button">
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#basicExampleModal" (click)="addTypeClick()">
-    Add Customer Type
-  </button>
+<!-- <div class="customer-type-button">
   <Label>Customer Information</Label>
-</div>
+</div> -->
 
 <div>
   <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -31,7 +28,7 @@
   <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
     <!-- Button trigger modal -->
         <div class="customer-type-button">
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#basicExampleModal">
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#basicExampleModal" (click)="addTypeClick()">
             Add Customer Type
           </button>
         </div>
